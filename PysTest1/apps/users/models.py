@@ -10,7 +10,7 @@ class UserProfile(AbstractUser):
     # 微信开发
     #openid = models.CharField(verbose_name=u"微信 openid", max_length=32, default='')
     #nickname = models.CharField(verbose_name=u"微信昵称", max_length=256, default='')
-    nick_name = models.CharField(max_length=50, verbose_name=u"昵称", default="")
+    nickname = models.CharField(max_length=50, verbose_name=u"昵称", default="")
     #wsex = models.CharField(verbose_name=u"微信性别", max_length=3, default='')
     #province = models.CharField(verbose_name=u"微信省份", max_length=50, default='')
     #city = models.CharField(verbose_name=u"微信城市", max_length=50, default='')

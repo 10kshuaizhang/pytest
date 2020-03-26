@@ -1,7 +1,12 @@
 # -*- coding:utf-8 -*-
 __author__ = '10k'
 __date__ = '2/23/20'
+
+import users
 import xadmin
+from xadmin.plugins.auth import UserAdmin, User
+from xadmin.layout import Fieldset, Main, Side, Row
+from django.utils.translation import ugettext as _
 from .models import UserProfile
 from xadmin import views
 
@@ -23,10 +28,14 @@ class GlobalSetting(object):
 xadmin.site.register(views.CommAdminView, GlobalSetting)
 
 
-# class UserProfileAdmin(object):
-#     list_display = ('o_id', 'o_desc', 'question')
-#     search_fields = ('o_id', 'o_desc', 'question')
-#     list_filter = ('o_id', 'o_desc', 'question')
-#
-#
-# xadmin.site.register(UserProfile, UserProfileAdmin)
+class UserProfileAdmin(UserAdmin):
+    # user_count = 10
+    # data_charts = {
+    #     "user_count": {'title': u"Server Report", "x-field": 'id', "y-field": "",
+    #                    "order": ('register_date',)},
+    #    }
+    pass
+
+
+xadmin.site.unregister(User)
+xadmin.site.register(UserProfile, UserProfileAdmin)

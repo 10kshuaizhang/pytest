@@ -23,7 +23,7 @@ class MentalEvaluation(models.Model):
     title = models.CharField(max_length=100, unique=True)
     intro = models.TextField()
     price = models.CharField(max_length=20)
-    created_on = models.CharField(max_length=200)
+    created_on = models.DateTimeField(max_length=200)
     is_online = models.CharField(max_length=30, choices=(("online", u"在线"),
                                                          ("offline", u"离线"),
                                                          ("inprogress", u"完善中")))

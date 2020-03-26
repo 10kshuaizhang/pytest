@@ -13,6 +13,10 @@ class MentalEvaluationAdmin(object):
                      'is_online', 'avatar', 'nums_eval', 'state', 'ques_num')
     list_filter = ('eval_id', 'eval_type', 'title', 'intro', 'price', 'created_on',
                    'is_online', 'avatar', 'nums_eval', 'state', 'ques_num')
+    data_charts = {
+        "user_count": {'title': u"测评统计", "x-field": 'eval_id', "y-field": "price",
+                       "order": ('created_on',)},
+    }
 
 
 xadmin.site.register(MentalEvaluation, MentalEvaluationAdmin)
@@ -40,9 +44,9 @@ xadmin.site.register(UserEvaluation, UserEvaluationAdmin)
 
 
 class OptionsAdmin(object):
-    list_display = ('nickname', 'register_date', 'is_vip')
-    search_fields = ('nickname', 'register_date', 'is_vip')
-    list_filter = ('nickname', 'register_date', 'is_vip')
+    list_display = ('o_id', 'o_desc', 'question')
+    search_fields = ('o_id', 'o_desc', 'question')
+    list_filter = ('o_id', 'o_desc', 'question')
 
 
 xadmin.site.register(Options, OptionsAdmin)
