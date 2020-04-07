@@ -7,7 +7,7 @@ import xadmin
 from xadmin.plugins.auth import UserAdmin, User
 from xadmin.layout import Fieldset, Main, Side, Row
 from django.utils.translation import ugettext as _
-from .models import UserProfile
+from .models import UserProfile, UserReport
 from xadmin import views
 
 
@@ -29,13 +29,24 @@ xadmin.site.register(views.CommAdminView, GlobalSetting)
 
 
 class UserProfileAdmin(UserAdmin):
-    # user_count = 10
     # data_charts = {
-    #     "user_count": {'title': u"Server Report", "x-field": 'id', "y-field": "",
-    #                    "order": ('register_date',)},
-    #    }
+    #     "user_count": {'title': u"User Report", "x-field": "register_date", "y-field": "id",
+    #                    "order": ("register_date",)},
+    # }
     pass
 
 
 xadmin.site.unregister(User)
 xadmin.site.register(UserProfile, UserProfileAdmin)
+
+
+class UserReportAdmin(object):
+    # list_display = ['today_date', "user_today_cnt"]
+    # list_per_page = 20
+    data_charts = {
+        "user_count": {'title': u"User Report", "x-field": "today_date", "y-field": ("user_today_cnt",),
+                       "order": ("id",)},
+    }
+
+
+xadmin.site.register(UserReport, UserReportAdmin)

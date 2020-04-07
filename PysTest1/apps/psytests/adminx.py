@@ -27,10 +27,10 @@ class MentalEvaluationAdmin(object):
     list_filter = ('eval_id', 'eval_type', 'eval_title', 'eval_intro', 'eval_price',
                    'eval_created_on', 'eval_is_online', 'eval_ques_nums', 'reverse_scoring',
                    'eval_dimension', 'questions')
-    data_charts = {
-        "user_count": {'title': u"测评统计", "x-field": 'eval_id', "y-field": "eval_price",
-                       "order": ('eval_created_on',)},
-    }
+    # data_charts = {
+    #     "user_count": {'title': u"测评统计", "x-field": 'eval_id', "y-field": "eval_price",
+    #                    "order": ('eval_created_on',)},
+    # }
 
     form = OptionsForm
 

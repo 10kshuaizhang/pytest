@@ -3,6 +3,7 @@ from datetime import datetime
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from future.backports.datetime import timedelta
 
 
 class UserProfile(AbstractUser):
@@ -30,3 +31,17 @@ class UserProfile(AbstractUser):
 
     def __str__(self):
         return self.nickname
+
+
+class UserReport(models.Model):
+    today_date = datetime.today().day
+    user_today_cnt = UserProfile.objects.filter(register_date=datetime.today()).count()
+    user_yesterday_cnt = UserProfile.objects.filter(register_date=(datetime.today() - timedelta(days=1))).count()
+    user_increase = user_today_cnt - user_yesterday_cnt
+
+    class Meta:
+        verbose_name = u'用户统计报告'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return str(self.today_date)
