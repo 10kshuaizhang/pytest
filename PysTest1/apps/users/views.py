@@ -5,7 +5,6 @@ import time
 import json
 
 
-
 #
 # def weixin_page(request):
 #     return render(request, 'weixin_index.html')

@@ -526,7 +526,7 @@ class ModelAdminView(CommAdminView):
         Get model object instance by object_id, used for change admin view
         """
         # first get base admin view property queryset, return default model queryset
-        queryset = self.queryset()
+        queryset = self
         model = queryset.model
         try:
             object_id = model._meta.pk.to_python(object_id)

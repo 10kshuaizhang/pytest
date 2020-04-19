@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>hi</title>
-</head>
+    {% for banner in all_banners %}
+	<a href="{{ banner.url}}">
+
+        <img src="{{ MEDIA_URL }}{{ banner.image }}">
+
+    </a>
+    {% endfor %}
+
 <body>
 
 </body>

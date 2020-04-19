@@ -13,15 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
 from django.http import HttpResponse
+from django.views.static import serve
 
 import users
 import xadmin
 from django.urls import path
+
+from PysTest1.settings import MEDIA_ROOT
+from promotions.views import BannerView
 from psytests import views
-from users import  views as user_view
+from users import views as user_view
 from django.views.generic import RedirectView
 
 
@@ -30,6 +35,7 @@ def weixin_verify(request):
 
 
 urlpatterns = [
+    url(r'^media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
     url('xadmin/', xadmin.site.urls),
     path('', views.eval_index),
     path('add_eval/', views.add_eval),
@@ -39,6 +45,7 @@ urlpatterns = [
     path('classify_list/', views.get_eval_type_detail),
     path('classify_list_time/', views.get_eval_type_detail_time),
     path('user_eval_list/', views.get_user_eval_list),
+    url(r'^getBanner/', BannerView.as_view(), name="banner")
 
     # path('weixin/', user_view.weixin_page),
     # path('weixin/bind/', user_view.weixinbind),
