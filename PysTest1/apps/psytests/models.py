@@ -44,6 +44,9 @@ class MentalEvaluation(models.Model):
                                                               ("inprogress", u"完善中")),
                                       verbose_name=u"测评上线状态")
     # avatar = models.CharField(max_length=200)    #location of avatar in frontend
+
+    avatar = models.ImageField(upload_to="evalPics/%Y/%m", max_length=100, verbose_name=u"测评图")
+
     eval_ques_nums = models.IntegerField(verbose_name=u"测评问题数量")  # user_count
     # state = models.IntegerField()
     # ques_num = models.IntegerField()

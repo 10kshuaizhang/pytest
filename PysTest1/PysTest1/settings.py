@@ -113,9 +113,20 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = (
+#     os.path.join(BASE_DIR, "static"),
+# )
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "static"),
+#     '/Users/shuaizhang/PycharmProjects/PysTest1/PysTest1/extra_apps/xadmin/static',
+# )
+
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+    os.path.join(BASE_DIR, 'static'),
+    )
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles',
+            '/Users/shuaizhang/PycharmProjects/PysTest1/PysTest1/extra_apps/xadmin/static',
+                           )
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
